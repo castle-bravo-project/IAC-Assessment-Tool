@@ -1,0 +1,1935 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sixth Amendment IAC Assessment — Cronic–Strickland Continuum</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ── RESET & BASE ───────────────────────────────────────────────────────── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        font-size: 16px;
+      }
+      body {
+        font-family: 'IBM Plex Sans', sans-serif;
+        background: #f7f5f0;
+        color: #1a1a1a;
+        min-height: 100vh;
+        padding: 2rem 1rem 4rem;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ── LAYOUT ─────────────────────────────────────────────────────────────── */
+      .shell {
+        max-width: 740px;
+        margin: 0 auto;
+      }
+
+      /* ── MASTHEAD ────────────────────────────────────────────────────────────── */
+      .masthead {
+        border-bottom: 1.5px solid #1a1a1a;
+        padding-bottom: 1.25rem;
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+      .masthead-left {
+        flex: 1;
+      }
+      .masthead-eyebrow {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #888;
+        margin-bottom: 4px;
+      }
+      .masthead h1 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 28px;
+        font-weight: 400;
+        line-height: 1.15;
+        color: #1a1a1a;
+      }
+      .masthead h1 em {
+        font-style: italic;
+        color: #5c3d1e;
+      }
+      .masthead-right {
+        text-align: right;
+        font-size: 11px;
+        color: #888;
+        line-height: 1.6;
+      }
+
+      .masthead-logo {
+        max-width: 84px;
+        height: auto;
+        display: block;
+        margin: 0 0 6px auto;
+        filter: grayscale(100%);
+        opacity: 0.95;
+      }
+      .masthead-right-text {
+        font-size: 11px;
+        color: #888;
+        line-height: 1.45;
+      }
+      .print-logo {
+        max-width: 120px;
+        height: auto;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 8px;
+        filter: grayscale(100%);
+        opacity: 0.95;
+      }
+
+      /* ── PHASE TRACKER ───────────────────────────────────────────────────────── */
+      .phase-track {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        margin-bottom: 2rem;
+        border: 1px solid #d8d4cc;
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      .phase-step {
+        flex: 1;
+        padding: 8px 12px;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        text-align: center;
+        background: #efede8;
+        color: #999;
+        border-right: 1px solid #d8d4cc;
+        transition: all 0.2s;
+      }
+      .phase-step:last-child {
+        border-right: none;
+      }
+      .phase-step.active {
+        background: #1a1a1a;
+        color: #f7f5f0;
+      }
+      .phase-step.done {
+        background: #2d5016;
+        color: #c8e6a0;
+      }
+      .phase-step .step-check {
+        margin-right: 4px;
+      }
+
+      /* ── PROGRESS ────────────────────────────────────────────────────────────── */
+      .progress-wrap {
+        margin-bottom: 1.5rem;
+      }
+      .progress-meta {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: #888;
+        margin-bottom: 6px;
+      }
+      .progress-bar {
+        height: 3px;
+        background: #d8d4cc;
+        border-radius: 2px;
+      }
+      .progress-fill {
+        height: 100%;
+        background: #1a1a1a;
+        border-radius: 2px;
+        transition: width 0.4s ease;
+      }
+
+      /* ── QUESTION CARD ───────────────────────────────────────────────────────── */
+      .q-card {
+        background: #fff;
+        border: 1px solid #d8d4cc;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      }
+      .q-card-header {
+        padding: 1.25rem 1.5rem 0;
+      }
+      .q-tag {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #888;
+        margin-bottom: 10px;
+      }
+      .q-text {
+        font-family: 'DM Serif Display', serif;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 1.4;
+        color: #1a1a1a;
+        margin-bottom: 8px;
+      }
+      .q-cite {
+        font-size: 11px;
+        color: #aaa;
+        font-style: italic;
+        margin-bottom: 14px;
+        line-height: 1.5;
+      }
+
+      /* ── DETAIL ACCORDION ────────────────────────────────────────────────────── */
+      .detail-toggle {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        color: #5c3d1e;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0 0 12px;
+        font-family: 'IBM Plex Sans', sans-serif;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        font-weight: 500;
+      }
+      .detail-box {
+        font-size: 13px;
+        line-height: 1.7;
+        color: #555;
+        background: #faf9f6;
+        border-top: 1px solid #edeae4;
+        border-bottom: 1px solid #edeae4;
+        padding: 12px 1.5rem;
+        display: none;
+        margin: 0 0 0;
+      }
+      .detail-box.open {
+        display: block;
+      }
+
+      /* ── EXAMPLES ────────────────────────────────────────────────────────────── */
+      .examples-wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        border-top: 1px solid #edeae4;
+      }
+      .ex-carousel {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+      .ex-nav {
+        background: #fff;
+        border: 1px solid #d8d4cc;
+        border-radius: 6px;
+        padding: 6px 8px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .ex-nav:disabled {
+        opacity: 0.45;
+        cursor: default;
+      }
+      .ex-slide {
+        flex: 1;
+        font-size: 13px;
+        color: #444;
+      }
+      .example-col {
+        padding: 1rem 1.25rem;
+      }
+      .example-col:first-child {
+        border-right: 1px solid #edeae4;
+      }
+      .ex-head {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .ex-head.comply {
+        color: #2d5016;
+      }
+      .ex-head.violate {
+        color: #8b2020;
+      }
+      .ex-icon {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        flex-shrink: 0;
+      }
+      .ex-icon.comply {
+        background: #c8e6a0;
+        color: #2d5016;
+      }
+      .ex-icon.violate {
+        background: #f7c1c1;
+        color: #8b2020;
+      }
+      .ex-body {
+        font-size: 12.5px;
+        line-height: 1.65;
+        color: #444;
+      }
+
+      /* ── NOTES ───────────────────────────────────────────────────────────────── */
+      .notes-wrap {
+        border-top: 1px solid #edeae4;
+        padding: 1rem 1.5rem;
+        background: #fdfcf9;
+      }
+      .notes-label {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #aaa;
+        margin-bottom: 6px;
+      }
+      .notes-input {
+        width: 100%;
+        border: none;
+        background: transparent;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 13px;
+        color: #333;
+        line-height: 1.6;
+        resize: none;
+        outline: none;
+        min-height: 60px;
+        padding: 0;
+      }
+      .notes-input::placeholder {
+        color: #ccc;
+      }
+
+      /* ── ACTION BUTTONS ──────────────────────────────────────────────────────── */
+      .btn-strip {
+        display: flex;
+        gap: 8px;
+        padding: 1.25rem 1.5rem;
+        border-top: 1px solid #edeae4;
+      }
+      .btn {
+        flex: 1;
+        padding: 11px 16px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        border: 1px solid;
+        font-family: 'IBM Plex Sans', sans-serif;
+        transition: all 0.15s;
+        letter-spacing: 0.01em;
+      }
+      .btn-yes {
+        background: #fdf2f2;
+        border-color: #d48080;
+        color: #8b2020;
+      }
+      .btn-yes:hover {
+        background: #fadddd;
+      }
+      .btn-no {
+        background: #f2f7ee;
+        border-color: #90b070;
+        color: #2d5016;
+      }
+      .btn-no:hover {
+        background: #e4f0da;
+      }
+      .btn-followup {
+        background: #fff7e5;
+        border-color: #d4b06a;
+        color: #7a5c10;
+      }
+      .btn-followup:hover {
+        background: #faf0d9;
+      }
+      .btn-secondary {
+        background: #fff;
+        border-color: #d8d4cc;
+        color: #555;
+      }
+      .btn-secondary:hover {
+        background: #f7f5f0;
+      }
+      .btn:focus-visible,
+      .action-btn:focus-visible,
+      .detail-toggle:focus-visible,
+      .notes-input:focus-visible,
+      .global-notes-input:focus-visible {
+        outline: 2px solid #1a1a1a;
+        outline-offset: 2px;
+      }
+      @media (max-width: 680px) {
+        .examples-wrap {
+          grid-template-columns: 1fr;
+        }
+        .btn-strip {
+          flex-direction: column;
+        }
+        .summary-row {
+          display: block;
+        }
+        .summary-row-left,
+        .summary-row-right {
+          width: 100%;
+        }
+      }
+
+      /* ── STRICKLAND INTRO ────────────────────────────────────────────────────── */
+      .strickland-notice,
+      .answer-notice {
+        background: #fdf8ee;
+        border: 1px solid #e8d48c;
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-size: 13px;
+        color: #7a5c10;
+        line-height: 1.6;
+        margin-bottom: 1.25rem;
+      }
+      .strickland-notice strong {
+        font-weight: 600;
+      }
+
+      /* ── RESULT CARD ─────────────────────────────────────────────────────────── */
+      .result-card {
+        border-radius: 10px;
+        padding: 1.75rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid;
+      }
+      .result-card.cronic {
+        background: #fdf2f2;
+        border-color: #d48080;
+      }
+      .result-card.strickland-win {
+        background: #f2f7ee;
+        border-color: #90b070;
+      }
+      .result-card.strickland-fail {
+        background: #f7f5f0;
+        border-color: #d8d4cc;
+      }
+      .result-verdict {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      .result-card.cronic .result-verdict {
+        color: #8b2020;
+      }
+      .result-card.strickland-win .result-verdict {
+        color: #2d5016;
+      }
+      .result-card.strickland-fail .result-verdict {
+        color: #888;
+      }
+      .result-title {
+        font-family: 'DM Serif Display', serif;
+        font-size: 26px;
+        font-weight: 400;
+        color: #1a1a1a;
+        margin-bottom: 10px;
+        line-height: 1.25;
+      }
+      .result-body {
+        font-size: 14px;
+        line-height: 1.75;
+        color: #444;
+        margin-bottom: 12px;
+      }
+      .result-cite {
+        font-size: 12px;
+        font-style: italic;
+        color: #999;
+        line-height: 1.5;
+      }
+      .result-meta {
+        font-size: 12px;
+        color: #555;
+        margin-top: 12px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .result-flags {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
+      .result-badge {
+        font-size: 11px;
+        font-weight: 700;
+        padding: 6px 10px;
+        border-radius: 999px;
+        color: #777;
+        background: #efede8;
+      }
+      .result-badge.flag-active {
+        color: #1a1a1a;
+        background: #f2f7ec;
+      }
+
+      /* ── SCORE PANEL ─────────────────────────────────────────────────────────── */
+      .score-panel {
+        background: #fff;
+        border: 1px solid #d8d4cc;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-bottom: 1.25rem;
+      }
+      .panel-title {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #aaa;
+        margin-bottom: 1rem;
+      }
+      .score-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-bottom: 1.25rem;
+      }
+      .score-cell {
+        background: #f7f5f0;
+        border-radius: 6px;
+        padding: 14px 10px;
+        text-align: center;
+      }
+      .score-num {
+        font-size: 28px;
+        font-weight: 600;
+        color: #1a1a1a;
+        line-height: 1;
+        margin-bottom: 4px;
+      }
+      .score-num.red {
+        color: #8b2020;
+      }
+      .score-num.green {
+        color: #2d5016;
+      }
+      .score-lbl {
+        font-size: 11px;
+        color: #999;
+        letter-spacing: 0.02em;
+      }
+
+      .risk-bar-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .risk-row {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .risk-meta {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+      }
+      .risk-label {
+        color: #555;
+        font-weight: 500;
+      }
+      .risk-val {
+        font-weight: 600;
+        color: #1a1a1a;
+        font-family: 'IBM Plex Mono', monospace;
+      }
+      .risk-track {
+        height: 8px;
+        background: #edeae4;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .risk-fill {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 0.6s ease;
+      }
+      .risk-fill.cronic-fill {
+        background: #c84040;
+      }
+      .risk-fill.strick-fill {
+        background: #c89020;
+      }
+      .risk-fill.none-fill {
+        background: #60a030;
+      }
+
+      /* ── TRAIL ───────────────────────────────────────────────────────────────── */
+      .trail-panel {
+        background: #fff;
+        border: 1px solid #d8d4cc;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 1.25rem;
+      }
+      .trail-item {
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        border-bottom: 1px solid #edeae4;
+      }
+      .trail-item:last-child {
+        border-bottom: none;
+      }
+      .trail-verdict {
+        padding: 12px 14px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        display: flex;
+        align-items: flex-start;
+        padding-top: 13px;
+        border-right: 1px solid #edeae4;
+      }
+      .trail-verdict.yes {
+        color: #8b2020;
+        background: #fdf8f8;
+      }
+      .trail-verdict.no {
+        color: #2d5016;
+        background: #f8fdf4;
+      }
+      .trail-text {
+        padding: 12px 14px;
+      }
+      .trail-q {
+        font-size: 12.5px;
+        color: #333;
+        line-height: 1.5;
+        margin-bottom: 3px;
+      }
+      .trail-note {
+        font-size: 11.5px;
+        color: #888;
+        font-style: italic;
+        line-height: 1.4;
+      }
+      .trail-phase-badge {
+        display: inline-block;
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        background: #efede8;
+        color: #888;
+        padding: 2px 6px;
+        border-radius: 3px;
+        margin-bottom: 4px;
+      }
+      .summary-panel {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 1rem;
+      }
+      .summary-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        padding: 14px 16px;
+        border: 1px solid #edeae4;
+        border-radius: 10px;
+        background: #faf9f6;
+      }
+      .summary-row-left {
+        display: grid;
+        gap: 6px;
+      }
+      .summary-qnum {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #555;
+      }
+      .summary-qtext {
+        font-size: 13px;
+        color: #1a1a1a;
+        line-height: 1.5;
+      }
+      .summary-phase {
+        font-size: 11px;
+        color: #999;
+      }
+      .summary-row-right {
+        display: grid;
+        gap: 8px;
+        justify-items: end;
+        text-align: right;
+      }
+      .summary-answer {
+        font-weight: 700;
+        color: #1a1a1a;
+      }
+      .summary-note {
+        font-size: 12px;
+        color: #666;
+        line-height: 1.5;
+      }
+
+      /* ── ASSESSMENT NOTES (end) ──────────────────────────────────────────────── */
+      .global-notes-card {
+        background: #fff;
+        border: 1px solid #d8d4cc;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-bottom: 1.25rem;
+      }
+      .global-notes-input {
+        width: 100%;
+        border: 1px solid #d8d4cc;
+        border-radius: 6px;
+        background: #faf9f6;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 13px;
+        color: #333;
+        line-height: 1.7;
+        resize: vertical;
+        outline: none;
+        padding: 10px 12px;
+        min-height: 100px;
+        transition: border-color 0.15s;
+      }
+      .global-notes-input:focus {
+        border-color: #999;
+      }
+      .global-notes-input::placeholder {
+        color: #ccc;
+      }
+
+      /* ── FOOTER ACTIONS ──────────────────────────────────────────────────────── */
+      .footer-actions {
+        display: flex;
+        gap: 10px;
+      }
+      .action-btn {
+        flex: 1;
+        padding: 12px 16px;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        border: 1px solid;
+        font-family: 'IBM Plex Sans', sans-serif;
+        transition: all 0.15s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        letter-spacing: 0.01em;
+      }
+      .btn-export {
+        background: #1a1a1a;
+        border-color: #1a1a1a;
+        color: #f7f5f0;
+      }
+      .btn-export:hover {
+        background: #333;
+      }
+      .btn-restart {
+        background: #fff;
+        border-color: #d8d4cc;
+        color: #555;
+      }
+      .btn-restart:hover {
+        background: #f7f5f0;
+      }
+
+      /* ── SVG ICONS (inline) ──────────────────────────────────────────────────── */
+      .ico {
+        width: 15px;
+        height: 15px;
+        display: inline-block;
+        vertical-align: middle;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      /* ══════════════════════════════════════════════════════════════════════════
+   PRINT STYLES — PDF export via window.print()
+══════════════════════════════════════════════════════════════════════════ */
+      @media print {
+        @page {
+          size: letter;
+          margin: 1.5cm 1.8cm;
+        }
+
+        body {
+          background: #fff !important;
+          padding: 0;
+          font-size: 11px;
+          color: #000;
+        }
+
+        .shell {
+          max-width: 100%;
+        }
+
+        /* hide interactive elements */
+        .btn-strip,
+        .footer-actions,
+        .detail-toggle,
+        .progress-wrap,
+        .phase-track,
+        .detail-box,
+        .strickland-notice {
+          display: none !important;
+        }
+
+        /* force all detail boxes open in print */
+        .detail-box {
+          display: block !important;
+        }
+
+        /* page breaks */
+        .q-card {
+          page-break-inside: avoid;
+          margin-bottom: 0.8rem;
+          box-shadow: none;
+          border: 1px solid #ccc;
+        }
+        .result-card {
+          page-break-inside: avoid;
+        }
+        .score-panel {
+          page-break-inside: avoid;
+        }
+        .trail-panel {
+          page-break-before: auto;
+        }
+
+        .masthead {
+          border-bottom: 2px solid #000;
+          padding-bottom: 0.5rem;
+          margin-bottom: 1rem;
+        }
+        .masthead h1 {
+          font-size: 20px;
+        }
+        .masthead-logo {
+          display: none !important;
+        }
+
+        .q-text {
+          font-size: 14px;
+        }
+        .result-title {
+          font-size: 18px;
+        }
+
+        /* print header watermark */
+        .print-header {
+          display: block !important;
+          font-size: 9px;
+          color: #999;
+          text-align: right;
+          margin-bottom: 0.5rem;
+          border-bottom: 0.5px solid #ccc;
+          padding-bottom: 4px;
+        }
+
+        .notes-input,
+        .global-notes-input {
+          border: 0.5px solid #ccc !important;
+          background: #fff !important;
+          min-height: unset;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell" id="app">
+      <!-- rendered by JS -->
+    </div>
+
+    <script>
+      /* ── DATA ─────────────────────────────────────────────────────────────────── */
+      const QUESTIONS = [
+        {
+          id: 'q1',
+          phase: 'cronic-threshold',
+          phaseLabel: 'Cronic — threshold',
+          text: 'Is the defendant denied access to counsel entirely?',
+          details:
+            'The threshold Cronic inquiry. Complete denial of counsel at any point in a criminal proceeding — arraignment, trial, sentencing — triggers automatic reversal without a showing of prejudice.',
+          citation:
+            'United States v. Cronic, 466 U.S. 648 (1984); Gideon v. Wainwright, 372 U.S. 335 (1963)',
+          comply:
+            'Counsel is present and available at all proceedings. A public defender is assigned promptly at arraignment and remains on the case through sentencing.',
+          complyExamples: [
+            'Counsel is present and available at all proceedings. A public defender is assigned promptly at arraignment and remains on the case through sentencing.',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.',
+            'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          ],
+          violate:
+            'A defendant is held for 11 months awaiting trial with no attorney ever assigned. No one appears on their behalf at arraignment or any subsequent hearing.',
+          violateExamples: [
+            'A defendant is held for 11 months awaiting trial with no attorney ever assigned. No one appears on their behalf at arraignment or any subsequent hearing.',
+            'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+            'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+          ],
+          yesNext: 'CRONIC_PRESUMED',
+          noNext: 'q2',
+        },
+        {
+          id: 'q2',
+          phase: 'cronic-threshold',
+          phaseLabel: 'Cronic — threshold',
+          text: 'Is the defendant subject to subtle or direct pressure to waive the right to counsel?',
+          details:
+            'A waiver of the Sixth Amendment right to counsel is only valid if made knowingly, voluntarily, and intelligently. Pressure by the court, prosecution, or institutional actors to waive counsel — even indirect — renders the waiver constitutionally infirm.',
+          citation:
+            'Johnson v. Zerbst, 304 U.S. 458 (1938); Brewer v. Williams, 430 U.S. 387 (1977)',
+          comply:
+            'The court clearly explains the right to counsel, the dangers of self-representation, and ensures any waiver is written, witnessed, and made on the record with full understanding.',
+          complyExamples: [
+            'The court clearly explains the right to counsel, the dangers of self-representation, and ensures any waiver is written, witnessed, and made on the record with full understanding.',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent libero.',
+            'Phasellus volutpat, metus eget egestas mollis, lacus lacus blandit dui, id egestas quam mauris ut lacus.',
+          ],
+          violate:
+            'A judge repeatedly tells a defendant they can resolve the matter quickly if they "just represent yourself today" and continues the trial before counsel arrives.',
+          violateExamples: [
+            'A judge repeatedly tells a defendant they can resolve the matter quickly if they "just represent yourself today" and continues the trial before counsel arrives.',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien.',
+          ],
+          yesNext: 'CRONIC_PRESUMED',
+          noNext: 'q3',
+        },
+        {
+          id: 'q3',
+          phase: 'cronic-threshold',
+          phaseLabel: 'Cronic — threshold',
+          text: "Are appointed attorneys absent at critical stages of the defendant's case?",
+          details:
+            'Under Cronic, constructive denial of counsel occurs when counsel is entirely absent during a "critical stage" — any proceeding where the defendant\'s rights may be substantially affected. Critical stages include arraignment, preliminary hearing, plea proceedings, sentencing, and confrontation with the prosecution.',
+          citation:
+            'Cronic, 466 U.S. at 659 n.25; Mempa v. Rhay, 389 U.S. 128 (1967)',
+          comply:
+            'Defense counsel appears at every court date, is present during all interrogations where the right has attached, and attends both the plea hearing and sentencing.',
+          complyExamples: [
+            'Defense counsel appears at every court date, is present during all interrogations where the right has attached, and attends both the plea hearing and sentencing.',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non mauris vitae erat consequat auctor.',
+            'Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.',
+          ],
+          violate:
+            'The assigned public defender is absent from the preliminary hearing and the plea colloquy. A substitute who has never met the defendant is briefly substituted with no file review.',
+          violateExamples: [
+            'The assigned public defender is absent from the preliminary hearing and the plea colloquy. A substitute who has never met the defendant is briefly substituted with no file review.',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.',
+          ],
+          yesNext: 'CRONIC_PRESUMED',
+          noNext: 'q4',
+        },
+        {
+          id: 'q4',
+          phase: 'cronic-systemic',
+          phaseLabel: 'Cronic — systemic',
+          text: 'Does the system allow the trial court to have excessive or inappropriate authority over the selection, compensation, or termination of appointed counsel?',
+          details:
+            "Judicial control over defense counsel's appointment and compensation creates structural conflicts that undermine the independence necessary for effective representation. Such control may constitute a per se Sixth Amendment violation without requiring individual prejudice.",
+          citation:
+            'Caplin & Drysdale v. United States, 491 U.S. 617 (1989); cf. Wheat v. United States, 486 U.S. 153 (1988)',
+          comply:
+            'Appointed counsel is selected through an independent public defender office or a neutral rotation system. The judge plays no role in assignment, pay, or removal.',
+          complyExamples: [
+            'Appointed counsel is selected through an independent public defender office or a neutral rotation system. The judge plays no role in assignment, pay, or removal.',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.',
+          ],
+          violate:
+            'The presiding judge personally selects which private attorneys receive court appointments and can reduce their fees if he deems their motions "unnecessary" or "obstructionist."',
+          violateExamples: [
+            'The presiding judge personally selects which private attorneys receive court appointments and can reduce their fees if he deems their motions "unnecessary" or "obstructionist."',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'Suspendisse potenti. Sed lectus. Integer euismod lacus luctus magna.',
+          ],
+          yesNext: 'CRONIC_STRUCTURAL',
+          noNext: 'q5',
+        },
+        {
+          id: 'q5',
+          phase: 'cronic-systemic',
+          phaseLabel: 'Cronic — systemic',
+          text: 'Does the system allow any branch of state or local government to have excessive or inappropriate authority over the selection, compensation, or termination of appointed counsel?',
+          details:
+            "Structural IAC may arise where the executive or legislative branch imposes funding constraints, political influence, or administrative control that compromises counsel's independence. Underfunded public defender systems subject to prosecutorial or governmental oversight may meet this threshold.",
+          citation:
+            'Polk County v. Dodson, 454 U.S. 312 (1981); Alabama v. Shelton, 535 U.S. 654 (2002)',
+          comply:
+            "The public defender office is independently funded, governed by its own board, and insulated from political interference. The DA's office has no input on defender staffing or budgets.",
+          complyExamples: [
+            "The public defender office is independently funded, governed by its own board, and insulated from political interference. The DA's office has no input on defender staffing or budgets.",
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.',
+          ],
+          violate:
+            "The county commission annually reviews individual public defender performance and can reduce the office's budget if too many defendants are acquitted or receive reduced charges.",
+          violateExamples: [
+            "The county commission annually reviews individual public defender performance and can reduce the office's budget if too many defendants are acquitted or receive reduced charges.",
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.',
+          ],
+          yesNext: 'CRONIC_STRUCTURAL',
+          noNext: 'q6',
+        },
+        {
+          id: 'q6',
+          phase: 'cronic-systemic',
+          phaseLabel: 'Cronic — systemic',
+          text: "Does the system allow the method of compensation to place appointed counsel's financial interests in conflict with their client's interests?",
+          details:
+            'Compensation structures such as flat-fee contracts, per-case caps, or systems that reward speed over quality create financial disincentives to zealous advocacy. These conflicts may constitute structural IAC under Cronic.',
+          citation:
+            'Cuyler v. Sullivan, 446 U.S. 335 (1980); Wood v. Georgia, 450 U.S. 261 (1981)',
+          comply:
+            'Appointed counsel is paid hourly at a reasonable market rate with no cap on hours for complex felonies. Payment is made regardless of case outcome or speed of resolution.',
+          complyExamples: [
+            'Appointed counsel is paid hourly at a reasonable market rate with no cap on hours for complex felonies. Payment is made regardless of case outcome or speed of resolution.',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.',
+          ],
+          violate:
+            'Attorneys are paid a flat $300 per felony case regardless of complexity. Resolving a case via guilty plea on day one pays the same as taking a week-long trial.',
+          violateExamples: [
+            'Attorneys are paid a flat $300 per felony case regardless of complexity. Resolving a case via guilty plea on day one pays the same as taking a week-long trial.',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.',
+          ],
+          yesNext: 'CRONIC_STRUCTURAL',
+          noNext: 'q7',
+        },
+        {
+          id: 'q7',
+          phase: 'cronic-systemic',
+          phaseLabel: 'Cronic — systemic',
+          text: 'Does the system allow appointed counsel to handle a limitless caseload, or proceed without sufficient time to adequately prepare for every client?',
+          details:
+            'Excessive caseloads that prevent adequate preparation constitute constructive denial of counsel under Cronic. An attorney present in name only — due to caseload crushing the capacity for individual attention — is functionally equivalent to no attorney at all.',
+          citation:
+            'Cronic, 466 U.S. at 654 n.11; Trevino v. Thaler, 569 U.S. 413 (2013); ABA Ten Principles of a Public Defense Delivery System (2002)',
+          comply:
+            'Public defenders carry no more than 150 felony cases per year per ABA standards. Each client receives an in-person meeting, a full file review, and adequate investigation time.',
+          complyExamples: [
+            'Public defenders carry no more than 150 felony cases per year per ABA standards. Each client receives an in-person meeting, a full file review, and adequate investigation time.',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.',
+          ],
+          violate:
+            'Each public defender carries 500+ open felony cases. Attorneys routinely meet clients for the first time at the courthouse door moments before their plea hearing.',
+          violateExamples: [
+            'Each public defender carries 500+ open felony cases. Attorneys routinely meet clients for the first time at the courthouse door moments before their plea hearing.',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'Et harum quidem rerum facilis est et expedita distinctio.',
+          ],
+          yesNext: 'CRONIC_STRUCTURAL',
+          noNext: 'q8',
+        },
+        {
+          id: 'q8',
+          phase: 'cronic-systemic',
+          phaseLabel: 'Cronic — systemic',
+          text: 'Does the system allow appointed counsel to represent a defendant whose interests conflict with a current or former client, without waiver?',
+          details:
+            'Unwaived conflicts of interest from concurrent or successive representation of adverse parties may constitute per se IAC under Cronic. Where an actual conflict exists and adversely affects performance, prejudice is presumed under Cuyler v. Sullivan.',
+          citation:
+            'Cuyler v. Sullivan, 446 U.S. 335 (1980); Mickens v. Taylor, 535 U.S. 162 (2002); Holloway v. Arkansas, 435 U.S. 475 (1978)',
+          comply:
+            'Conflict checks are run before every appointment. If a conflict exists, the defendant is offered independent counsel. Waivers are only accepted after full disclosure and a Faretta-style colloquy.',
+          complyExamples: [
+            'Conflict checks are run before every appointment. If a conflict exists, the defendant is offered independent counsel. Waivers are only accepted after full disclosure and a Faretta-style colloquy.',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.',
+          ],
+          violate:
+            'A public defender is assigned to represent a robbery defendant without anyone checking that the same office currently represents the alleged victim in an unrelated civil matter.',
+          violateExamples: [
+            'A public defender is assigned to represent a robbery defendant without anyone checking that the same office currently represents the alleged victim in an unrelated civil matter.',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.',
+          ],
+          yesNext: 'CRONIC_STRUCTURAL',
+          noNext: 'q9',
+        },
+        {
+          id: 'q9',
+          phase: 'strickland',
+          phaseLabel: 'Strickland — prong 1',
+          text: "Did counsel's performance fall below an objective standard of reasonableness?",
+          details:
+            "Strickland's first prong (deficiency). Courts evaluate whether counsel's conduct fell outside the wide range of professionally competent assistance, measured against prevailing professional norms at the time of trial. There is a strong presumption that counsel's conduct constitutes sound trial strategy.",
+          citation:
+            'Strickland v. Washington, 466 U.S. 668, 687–88 (1984); Harrington v. Richter, 562 U.S. 86 (2011)',
+          comply:
+            'Counsel conducted a thorough investigation, interviewed all identified witnesses, reviewed all discovery, filed appropriate pretrial motions, and made reasoned strategic decisions throughout.',
+          complyExamples: [
+            'Counsel conducted a thorough investigation, interviewed all identified witnesses, reviewed all discovery, filed appropriate pretrial motions, and made reasoned strategic decisions throughout.',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'Praesent commodo cursus magna, vel scelerisque nisl consectetur et.',
+          ],
+          violate:
+            'Counsel met with the defendant once for 10 minutes, filed no pretrial motions, conducted no independent investigation, and was unaware of three alibi witnesses the defendant had named in intake paperwork.',
+          violateExamples: [
+            'Counsel met with the defendant once for 10 minutes, filed no pretrial motions, conducted no independent investigation, and was unaware of three alibi witnesses the defendant had named in intake paperwork.',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'Donec ullamcorper nulla non metus auctor fringilla.',
+          ],
+          yesNext: 'q10',
+          noNext: 'STRICKLAND_FAIL_P1',
+        },
+        {
+          id: 'q10',
+          phase: 'strickland',
+          phaseLabel: 'Strickland — prong 2',
+          text: "Did counsel's deficient performance give rise to a reasonable probability that the result would have been different?",
+          details:
+            'Strickland\'s second prong (prejudice). A "reasonable probability" is one sufficient to undermine confidence in the outcome — it need not be more likely than not. Courts consider the totality of the evidence before the factfinder.',
+          citation:
+            'Strickland v. Washington, 466 U.S. 668, 694 (1984); Wiggins v. Smith, 539 U.S. 510 (2003); Rompilla v. Beard, 545 U.S. 374 (2005)',
+          comply:
+            'Despite some lapses in preparation, the physical evidence against the defendant was overwhelming and the uncontacted witnesses had minimal exculpatory value. Outcome was the same regardless.',
+          complyExamples: [
+            'Despite some lapses in preparation, the physical evidence against the defendant was overwhelming and the uncontacted witnesses had minimal exculpatory value. Outcome was the same regardless.',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'Integer posuere erat a ante venenatis dapibus posuere velit aliquet.',
+          ],
+          violate:
+            'The three uncontacted alibi witnesses would have placed the defendant 40 miles from the crime scene at the time of the offense. The only evidence against him was a single eyewitness ID made under poor conditions.',
+          violateExamples: [
+            'The three uncontacted alibi witnesses would have placed the defendant 40 miles from the crime scene at the time of the offense. The only evidence against him was a single eyewitness ID made under poor conditions.',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'Maecenas sed diam eget risus varius blandit sit amet non magna.',
+          ],
+          yesNext: 'STRICKLAND_SUCCESS',
+          noNext: 'STRICKLAND_FAIL_P2',
+        },
+      ];
+
+      const OUTCOMES = {
+        CRONIC_PRESUMED: {
+          type: 'cronic',
+          verdict: 'Per se Cronic violation — automatic reversal',
+          title: 'Prejudice is Presumed',
+          body: 'At least one of the three threshold conditions for automatic reversal is met. The defendant was entirely denied the assistance of counsel — whether by outright absence, coerced waiver, or absence at a critical stage. Courts do not require a showing of actual harm; the constitutional violation is presumed from the denial itself.',
+          cite: 'United States v. Cronic, 466 U.S. 648, 659–60 (1984); Bell v. Cone, 535 U.S. 685 (2002)',
+        },
+        CRONIC_STRUCTURAL: {
+          type: 'cronic',
+          verdict: 'Structural Cronic violation — systemic defect',
+          title: 'Systemic Defect Identified',
+          body: 'A structural or systemic defect in the appointed counsel delivery system rises to the level of constructive denial of counsel. The constitutional failure inheres in the system itself. Prejudice need not be demonstrated individually — the defect undermines the reliability of every proceeding it affects.',
+          cite: 'United States v. Cronic, 466 U.S. 648 (1984); Cuyler v. Sullivan, 446 U.S. 335 (1980)',
+        },
+        STRICKLAND_SUCCESS: {
+          type: 'strickland-win',
+          verdict: 'Successful IAC claim',
+          title: 'Both Strickland Prongs Satisfied',
+          body: "Counsel's performance was constitutionally deficient and that deficiency created a reasonable probability the outcome would have been different. The defendant is entitled to relief — typically a new trial or resentencing. On federal habeas, AEDPA requires showing the state court's adjudication was an unreasonable application of clearly established federal law.",
+          cite: 'Strickland v. Washington, 466 U.S. 668 (1984); 28 U.S.C. § 2254(d); Williams v. Taylor, 529 U.S. 362 (2000)',
+        },
+        STRICKLAND_FAIL_P1: {
+          type: 'strickland-fail',
+          verdict: 'Appeal rejected — deficiency prong not met',
+          title: 'Performance Not Deficient',
+          body: "Counsel's performance fell within the wide range of professionally competent assistance. Without deficiency under Strickland's first prong, the analysis ends. Courts apply a strong presumption that counsel's conduct constitutes sound trial strategy. The conviction and sentence stand.",
+          cite: 'Strickland v. Washington, 466 U.S. 668, 689–90 (1984); Harrington v. Richter, 562 U.S. 86, 104 (2011)',
+        },
+        STRICKLAND_FAIL_P2: {
+          type: 'strickland-fail',
+          verdict: 'Appeal rejected — prejudice prong not met',
+          title: 'Prejudice Not Established',
+          body: "Although counsel's performance may have been deficient, there is no reasonable probability the outcome would have been different with competent representation. Failure on either Strickland prong is fatal to the claim. The conviction and sentence stand.",
+          cite: 'Strickland v. Washington, 466 U.S. 668, 700 (1984); Knowles v. Mirzayance, 556 U.S. 111, 122 (2009)',
+        },
+        PARTIAL_ASSESSMENT: {
+          type: 'strickland-fail',
+          verdict: 'Assessment incomplete',
+          title: 'Incomplete Assessment',
+          body: 'One or more questions remain unanswered. The available responses provide an initial signal, but a complete assessment requires reviewing every question and finalizing the result.',
+          cite: 'Complete all questions for a definitive conclusion.',
+        },
+      };
+
+      const PHASES = [
+        { id: 'cronic-threshold', label: 'Cronic threshold' },
+        { id: 'cronic-systemic', label: 'Cronic systemic' },
+        { id: 'strickland', label: 'Strickland' },
+      ];
+
+      /* ── STATE ─────────────────────────────────────────────────────────────────── */
+      const ANSWER_LABELS = {
+        yes: 'Yes — condition present',
+        no: 'No — condition absent',
+        followup: 'Needs follow-up',
+      };
+
+      let state = {
+        currentQ: 0,
+        answers: [], // [{qid, ans, note}]
+        outcome: null,
+        pendingNotice: '',
+        globalNote: '',
+        detailOpen: false,
+        assessorName: '',
+        assessmentRef: '',
+        mode: 'question', // 'start', 'question', 'summary', 'result'
+        resumeAvailable: false,
+      };
+
+      /* ── HELPERS ───────────────────────────────────────────────────────────────── */
+      function phaseIndex(id) {
+        return PHASES.findIndex((p) => p.id === id);
+      }
+      function completedPhases() {
+        if (state.outcome) return PHASES.map((p) => p.id);
+        const cur = QUESTIONS[state.currentQ]?.phase;
+        const idx = phaseIndex(cur);
+        return PHASES.slice(0, idx).map((p) => p.id);
+      }
+      function currentPhaseId() {
+        if (state.outcome) return null;
+        return QUESTIONS[state.currentQ]?.phase;
+      }
+      function noteFor(qid) {
+        return (state.answers.find((a) => a.qid === qid) || {}).note || '';
+      }
+      function getAnswerLabel(ans) {
+        return ANSWER_LABELS[ans] || 'Unanswered';
+      }
+      function hasCompletedAllQuestions() {
+        return QUESTIONS.every((q) =>
+          state.answers.some((a) => a.qid === q.id && a.ans)
+        );
+      }
+      function getSavedState() {
+        try {
+          const raw = localStorage.getItem('iacAssessmentState');
+          return raw ? JSON.parse(raw) : null;
+        } catch (e) {
+          return null;
+        }
+      }
+      function saveState() {
+        const payload = {
+          currentQ: state.currentQ,
+          answers: state.answers,
+          outcome: state.outcome,
+          globalNote: state.globalNote,
+          assessorName: state.assessorName,
+          assessmentRef: state.assessmentRef,
+          mode: state.mode,
+        };
+        localStorage.setItem('iacAssessmentState', JSON.stringify(payload));
+        state.resumeAvailable = true;
+      }
+      function clearSavedState() {
+        localStorage.removeItem('iacAssessmentState');
+        state.resumeAvailable = false;
+      }
+      function loadSavedState() {
+        const saved = getSavedState();
+        if (saved && saved.answers && saved.answers.length > 0) {
+          state = {
+            ...state,
+            ...saved,
+            pendingNotice: '',
+            detailOpen: false,
+            resumeAvailable: true,
+            mode: saved.outcome ? 'result' : 'start',
+          };
+        }
+      }
+      function updateMeta(field, value) {
+        state[field] = value;
+        saveState();
+      }
+      function getConsequence(q, ans) {
+        const next = ans === 'yes' ? q.yesNext : q.noNext;
+        return OUTCOMES[next] ? next : null;
+      }
+      function getOutcomeFromAnswers() {
+        const answerMap = Object.fromEntries(
+          state.answers.map((a) => [a.qid, a])
+        );
+        const hasYes = (qid) => answerMap[qid] && answerMap[qid].ans === 'yes';
+        const hasNo = (qid) => answerMap[qid] && answerMap[qid].ans === 'no';
+
+        if (
+          state.answers.some(
+            (a) =>
+              a.ans === 'yes' &&
+              getConsequence(
+                QUESTIONS.find((q) => q.id === a.qid),
+                'yes'
+              ) === 'CRONIC_PRESUMED'
+          )
+        ) {
+          return 'CRONIC_PRESUMED';
+        }
+        if (
+          state.answers.some(
+            (a) =>
+              a.ans === 'yes' &&
+              getConsequence(
+                QUESTIONS.find((q) => q.id === a.qid),
+                'yes'
+              ) === 'CRONIC_STRUCTURAL'
+          )
+        ) {
+          return 'CRONIC_STRUCTURAL';
+        }
+        if (hasNo('q9')) {
+          return 'STRICKLAND_FAIL_P1';
+        }
+        if (hasYes('q9') && hasYes('q10')) {
+          return 'STRICKLAND_SUCCESS';
+        }
+        if (hasYes('q9') && hasNo('q10')) {
+          return 'STRICKLAND_FAIL_P2';
+        }
+        return null;
+      }
+      function calcScores() {
+        const yesAns = state.answers.filter((a) => a.ans === 'yes');
+        const noAns = state.answers.filter((a) => a.ans === 'no');
+        const followupAns = state.answers.filter((a) => a.ans === 'followup');
+        const cronicYes = yesAns.filter((a) => {
+          const q = QUESTIONS.find((q) => q.id === a.qid);
+          return (
+            q &&
+            (q.phase === 'cronic-threshold' || q.phase === 'cronic-systemic')
+          );
+        }).length;
+        const strickYes = yesAns.filter((a) => {
+          const q = QUESTIONS.find((q) => q.id === a.qid);
+          return q && q.phase === 'strickland';
+        }).length;
+        const finalOutcome = state.outcome || getOutcomeFromAnswers();
+        return {
+          total: state.answers.length,
+          yes: yesAns.length,
+          no: noAns.length,
+          followup: followupAns.length,
+          cronicRisk: Math.min(100, cronicYes * 12.5),
+          strickRisk: Math.min(100, strickYes * 50),
+          overallRisk: finalOutcome
+            ? finalOutcome.startsWith('CRONIC')
+              ? 100
+              : finalOutcome === 'STRICKLAND_SUCCESS'
+                ? 75
+                : 0
+            : 0,
+        };
+      }
+
+      /* ── SVG ICONS ─────────────────────────────────────────────────────────────── */
+      const icons = {
+        check: `<svg class="ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>`,
+        x: `<svg class="ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`,
+        book: `<svg class="ico" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>`,
+        file: `<svg class="ico" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`,
+        refresh: `<svg class="ico" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>`,
+        printer: `<svg class="ico" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>`,
+        edit: `<svg class="ico" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`,
+        scale: `<svg class="ico" viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="21"/><path d="M5 6l7-3 7 3"/><path d="M5 12l7 3 7-3"/><path d="M5 6c0 3.3-1 6-5 7.5"/><path d="M19 6c0 3.3 1 6 5 7.5"/></svg>`,
+      };
+
+      /* ── RENDER PHASE TRACK ────────────────────────────────────────────────────── */
+      function renderPhaseTrack() {
+        const done = completedPhases();
+        const cur = currentPhaseId();
+        return `<div class="phase-track">
+        ${PHASES.map((p) => {
+          let cls = 'phase-step';
+          if (done.includes(p.id)) cls += ' done';
+          else if (p.id === cur) cls += ' active';
+          const tick = done.includes(p.id)
+            ? `<span class="step-check">✓</span>`
+            : '';
+          return `<div class="${cls}">${tick}${p.label}</div>`;
+        }).join('')}
+      </div>`;
+      }
+
+      /* ── RENDER QUESTION ───────────────────────────────────────────────────────── */
+      function renderQuestion() {
+        const q = QUESTIONS[state.currentQ];
+        const pct = Math.round((state.currentQ / QUESTIONS.length) * 100);
+        const existingNote = noteFor(q.id);
+        const showStrickNotice =
+          q.phase === 'strickland' && state.currentQ === 8;
+        const noticeHtml = state.pendingNotice
+          ? `<div class="answer-notice" role="status" aria-live="polite">${icons.scale}&nbsp; ${state.pendingNotice}</div>`
+          : '';
+
+        return `
+        ${renderPhaseTrack()}
+        <div class="progress-wrap">
+          <div class="progress-meta">
+            <span>${q.phaseLabel}</span>
+            <span>Question ${state.currentQ + 1} of ${QUESTIONS.length}</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+        </div>
+
+        ${showStrickNotice ? `<div class="strickland-notice">${icons.scale}&nbsp; No structural Cronic defect was identified. The analysis now proceeds under the individualized <strong>Strickland</strong> two-prong test: (1) deficient performance, and (2) resulting prejudice.</div>` : ''}
+        ${noticeHtml}
+
+        <div class="q-card">
+          <div class="q-card-header">
+            <div class="q-tag">${q.phaseLabel}</div>
+            <div class="q-text">${q.text}</div>
+            <div class="q-cite">${icons.book} ${q.citation}</div>
+            <button class="detail-toggle" onclick="toggleDetail()" id="dtoggle">
+              ${state.detailOpen ? '▲ Hide legal detail' : '▼ Show legal detail'}
+            </button>
+          </div>
+          <div class="detail-box${state.detailOpen ? ' open' : ''}" id="dbox">${q.details}</div>
+          <div class="examples-wrap">
+            <div class="example-col">
+              <div class="ex-head comply"><span class="ex-icon comply">✓</span>Compliant example (condition absent)</div>
+              <div class="ex-carousel">
+                <button class="ex-nav" onclick="prevExample('${q.id}','comply')" aria-label="Previous compliant example">◀</button>
+                <div class="ex-slide" id="comply-slide-${q.id}">${(q.complyExamples && q.complyExamples[0]) || q.comply}</div>
+                <button class="ex-nav" onclick="nextExample('${q.id}','comply')" aria-label="Next compliant example">▶</button>
+              </div>
+              <div class="ex-body" id="comply-body-${q.id}">${(q.complyExamples && q.complyExamples[0]) || q.comply}</div>
+            </div>
+            <div class="example-col">
+              <div class="ex-head violate"><span class="ex-icon violate">✗</span>Non-compliant example (condition present)</div>
+              <div class="ex-carousel">
+                <button class="ex-nav" onclick="prevExample('${q.id}','violate')" aria-label="Previous non-compliant example">◀</button>
+                <div class="ex-slide" id="violate-slide-${q.id}">${(q.violateExamples && q.violateExamples[0]) || q.violate}</div>
+                <button class="ex-nav" onclick="nextExample('${q.id}','violate')" aria-label="Next non-compliant example">▶</button>
+              </div>
+              <div class="ex-body" id="violate-body-${q.id}">${(q.violateExamples && q.violateExamples[0]) || q.violate}</div>
+            </div>
+          </div>
+          <div class="notes-wrap">
+            <div class="notes-label">${icons.edit} Assessor notes (optional)</div>
+            <textarea class="notes-input" id="qnote" placeholder="Add observations, case-specific facts, or documentation references…" rows="3">${existingNote}</textarea>
+          </div>
+          <div class="btn-strip">
+            <button class="btn btn-yes" onclick="answer('yes')">
+              ${icons.x} Yes — condition present
+            </button>
+            <button class="btn btn-followup" onclick="answer('followup')">
+              ${icons.file} Needs follow-up
+            </button>
+            <button class="btn btn-no" onclick="answer('no')">
+              ${icons.check} No — condition absent
+            </button>
+          </div>
+          <div class="btn-strip" style="justify-content: space-between;">
+            <button class="btn btn-secondary" onclick="previousQuestion()" ${state.currentQ === 0 ? 'disabled' : ''}>
+              ← Previous question
+            </button>
+            <button class="btn btn-secondary" onclick="reviewAnswers()">
+              Review answers
+            </button>
+          </div>
+        </div>
+      `;
+      }
+
+      /* Example carousel helpers */
+      function ensureExampleIndex(qid) {
+        if (!state.exampleIndex) state.exampleIndex = {};
+        if (!state.exampleIndex[qid])
+          state.exampleIndex[qid] = { comply: 0, violate: 0 };
+      }
+      function getExampleArray(q, side) {
+        if (side === 'comply') return q.complyExamples || [q.comply];
+        return q.violateExamples || [q.violate];
+      }
+      function prevExample(qid, side) {
+        const q = QUESTIONS.find((x) => x.id === qid);
+        if (!q) return;
+        ensureExampleIndex(qid);
+        const arr = getExampleArray(q, side);
+        const idx = state.exampleIndex[qid][side];
+        state.exampleIndex[qid][side] = idx > 0 ? idx - 1 : arr.length - 1;
+        updateExampleDisplay(qid, side);
+      }
+      function nextExample(qid, side) {
+        const q = QUESTIONS.find((x) => x.id === qid);
+        if (!q) return;
+        ensureExampleIndex(qid);
+        const arr = getExampleArray(q, side);
+        const idx = state.exampleIndex[qid][side];
+        state.exampleIndex[qid][side] = idx < arr.length - 1 ? idx + 1 : 0;
+        updateExampleDisplay(qid, side);
+      }
+      function updateExampleDisplay(qid, side) {
+        const q = QUESTIONS.find((x) => x.id === qid);
+        if (!q || !state.exampleIndex || !state.exampleIndex[qid]) return;
+        const arr = getExampleArray(q, side);
+        const idx = state.exampleIndex[qid][side] || 0;
+        const bodyEl = document.getElementById(side + '-body-' + qid);
+        const slideEl = document.getElementById(side + '-slide-' + qid);
+        const text = arr[idx] || '';
+        if (bodyEl) bodyEl.innerHTML = text;
+        if (slideEl) slideEl.innerHTML = text;
+      }
+
+      function renderStartPrompt() {
+        const saved = getSavedState();
+        const answered = saved.answers ? saved.answers.length : 0;
+        return `
+        <div class="q-card">
+          <div class="q-card-header">
+            <div class="q-tag">Saved assessment found</div>
+            <div class="q-text">You have an unfinished assessment in progress.</div>
+            <div class="q-cite">${icons.book} Resume your work or start fresh with a new assessment.</div>
+          </div>
+          <div class="notes-wrap">
+            <div class="notes-label">Saved progress</div>
+            <div class="ex-body">${answered} question${answered === 1 ? '' : 's'} answered, assessor: ${saved.assessorName || 'not set'}, case ref: ${saved.assessmentRef || 'not set'}.</div>
+          </div>
+          <div class="btn-strip">
+            <button class="btn btn-no" onclick="continueSaved()">Continue saved assessment</button>
+            <button class="btn btn-secondary" onclick="startNewAssessment()">Start new assessment</button>
+          </div>
+        </div>
+      `;
+      }
+
+      function renderSummary() {
+        const complete = hasCompletedAllQuestions();
+        return `
+        <div class="q-card">
+          <div class="q-card-header">
+            <div class="q-tag">Review responses</div>
+            <div class="q-text">Verify every answer, update notes, and finalize the assessment.</div>
+            <div class="q-cite">${icons.book} You can jump back to any question to revise a response.</div>
+          </div>
+          <div class="notes-wrap">
+            <div class="notes-label">${complete ? 'All questions answered' : 'Incomplete assessment'}</div>
+            <div class="ex-body">${complete ? 'You may finalize the result now.' : 'Some questions are still unanswered. Return to the survey to complete them before finalizing.'}</div>
+          </div>
+          ${state.pendingNotice ? `<div class="answer-notice" role="status" aria-live="polite">${icons.scale}&nbsp; ${state.pendingNotice}</div>` : ''}
+          <div class="summary-panel">
+            ${QUESTIONS.map((q, index) => {
+              const answer = state.answers.find((a) => a.qid === q.id);
+              const label = answer ? getAnswerLabel(answer.ans) : 'Unanswered';
+              const note = answer?.note || '';
+              return `
+              <div class="summary-row">
+                <div class="summary-row-left">
+                  <div class="summary-qnum">Q${index + 1}</div>
+                  <div class="summary-qtext">${q.text}</div>
+                  <div class="summary-phase">${q.phaseLabel}</div>
+                </div>
+                <div class="summary-row-right">
+                  <div class="summary-answer">${label}</div>
+                  ${note ? `<div class="summary-note">${note}</div>` : ''}
+                  <button class="btn btn-secondary" onclick="gotoQuestion(${index})">Edit</button>
+                </div>
+              </div>
+            `;
+            }).join('')}
+          </div>
+          <div class="btn-strip">
+            <button class="btn btn-no" onclick="continueSurvey()">Continue survey</button>
+            <button class="btn btn-yes" onclick="finalizeAssessment()">Finalize assessment</button>
+          </div>
+        </div>
+      `;
+      }
+
+      /* ── RENDER OUTCOME ─────────────────────────────────────────────────────────── */
+      function renderOutcome() {
+        const outcomeKey = state.outcome || 'PARTIAL_ASSESSMENT';
+        const o = OUTCOMES[outcomeKey];
+        const s = calcScores();
+        const now = new Date();
+        const dateStr = now.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        });
+        const timeStr = now.toLocaleTimeString('en-US', {
+          hour: '2-digit',
+          minute: '2-digit',
+        });
+
+        const cronicBar = Math.round(s.cronicRisk);
+        const strickBar = Math.round(s.strickRisk);
+        const structuralFlag = state.answers.some((a) => {
+          const q = QUESTIONS.find((q) => q.id === a.qid);
+          return q && q.phase !== 'strickland' && a.ans === 'yes';
+        });
+        const individualFlag = state.answers.some((a) => {
+          const q = QUESTIONS.find((q) => q.id === a.qid);
+          return q && q.phase === 'strickland' && a.ans === 'yes';
+        });
+        const partial = !hasCompletedAllQuestions();
+
+        return `
+        ${renderPhaseTrack()}
+
+        <div class="result-card ${o.type}">
+          <div class="result-verdict">${o.verdict}</div>
+          <div class="result-title">${o.title}</div>
+          <div class="result-body">${o.body}</div>
+          <div class="result-cite">${icons.book} ${o.cite}</div>
+          <div class="result-meta">
+            ${state.assessorName ? `<div>Assessor: ${state.assessorName}</div>` : ''}
+            ${state.assessmentRef ? `<div>Case / Ref: ${state.assessmentRef}</div>` : ''}
+          </div>
+          ${partial ? `<div class="answer-notice">${icons.scale}&nbsp; This is a partial assessment. Some questions remain unanswered, so the result is provisional until the survey is complete.</div>` : ''}
+          <div class="result-flags">
+            <span class="result-badge ${structuralFlag ? 'flag-active' : ''}">Structural concern</span>
+            <span class="result-badge ${individualFlag ? 'flag-active' : ''}">Individual concern</span>
+          </div>
+        </div>
+
+        <div class="score-panel">
+          <div class="panel-title">Assessment summary</div>
+          <div class="score-grid">
+            <div class="score-cell">
+              <div class="score-num">${s.total}</div>
+              <div class="score-lbl">questions answered</div>
+            </div>
+            <div class="score-cell">
+              <div class="score-num red">${s.yes}</div>
+              <div class="score-lbl">conditions present</div>
+            </div>
+            <div class="score-cell">
+              <div class="score-num green">${s.no}</div>
+              <div class="score-lbl">conditions absent</div>
+            </div>
+            <div class="score-cell">
+              <div class="score-num">${s.followup}</div>
+              <div class="score-lbl">needs follow-up</div>
+            </div>
+          </div>
+          <div class="risk-bar-group">
+            <div class="risk-row">
+              <div class="risk-meta">
+                <span class="risk-label">Cronic exposure</span>
+                <span class="risk-val">${cronicBar}%</span>
+              </div>
+              <div class="risk-track"><div class="risk-fill cronic-fill" style="width:${cronicBar}%"></div></div>
+            </div>
+            <div class="risk-row">
+              <div class="risk-meta">
+                <span class="risk-label">Strickland exposure</span>
+                <span class="risk-val">${strickBar}%</span>
+              </div>
+              <div class="risk-track"><div class="risk-fill strick-fill" style="width:${strickBar}%"></div></div>
+            </div>
+            <div class="risk-row">
+              <div class="risk-meta">
+                <span class="risk-label">Overall constitutional risk</span>
+                <span class="risk-val">${s.overallRisk}%</span>
+              </div>
+              <div class="risk-track">
+                <div class="risk-fill ${s.overallRisk > 0 ? 'cronic-fill' : 'none-fill'}" style="width:${Math.max(s.overallRisk, 4)}%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="trail-panel">
+          <div style="padding:12px 14px 8px; border-bottom:1px solid #EDEAE4;">
+            <div class="panel-title" style="margin-bottom:0">Decision trail</div>
+          </div>
+          ${state.answers
+            .map((a) => {
+              const q = QUESTIONS.find((q) => q.id === a.qid);
+              const note = a.note || '';
+              return `<div class="trail-item">
+              <div class="trail-verdict ${a.ans}">${a.ans === 'yes' ? 'Yes' : 'No'}</div>
+              <div class="trail-text">
+                <div class="trail-phase-badge">${q.phaseLabel}</div>
+                <div class="trail-q">${q.text}</div>
+                ${note ? `<div class="trail-note">Note: ${note}</div>` : ''}
+              </div>
+            </div>`;
+            })
+            .join('')}
+        </div>
+
+        <div class="global-notes-card">
+          <div class="panel-title" style="margin-bottom:0.75rem">${icons.edit} Overall assessment notes</div>
+          <textarea class="global-notes-input" id="globalNote" placeholder="Overall conclusions, recommended actions, supporting documentation, follow-up steps…" rows="5" oninput="updateMeta('globalNote', this.value)">${state.globalNote}</textarea>
+        </div>
+
+        <div class="footer-actions">
+          <button class="action-btn btn-export" onclick="exportPDF()">
+            ${icons.printer} Export to PDF
+          </button>
+          <button class="action-btn btn-restart" onclick="restart()">
+            ${icons.refresh} New assessment
+          </button>
+        </div>
+      `;
+      }
+
+      /* ── RENDER HEADER INFO (first load) ─────────────────────────────────────── */
+      function renderMetaForm() {
+        return `
+        <div class="q-card" style="margin-bottom:1.25rem">
+          <div class="q-card-header" style="padding-bottom:1.25rem">
+            <div class="q-tag">Assessment details (optional)</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px">
+              <div>
+                <label style="font-size:11px;color:#999;display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.05em;font-weight:600">Assessor name</label>
+                <input type="text" id="assessorName" placeholder="e.g. J. Smith, Esq."
+                  style="width:100%;padding:8px 10px;border:1px solid #D8D4CC;border-radius:5px;font-family:'IBM Plex Sans',sans-serif;font-size:13px;background:#FAF9F6;outline:none;color:#333"
+                  value="${state.assessorName}"
+                  oninput="updateMeta('assessorName', this.value)">
+              </div>
+              <div>
+                <label style="font-size:11px;color:#999;display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.05em;font-weight:600">Case / reference no.</label>
+                <input type="text" id="assessmentRef" placeholder="e.g. 2025-CR-04471"
+                  style="width:100%;padding:8px 10px;border:1px solid #D8D4CC;border-radius:5px;font-family:'IBM Plex Sans',sans-serif;font-size:13px;background:#FAF9F6;outline:none;color:#333"
+                  value="${state.assessmentRef}"
+                  oninput="updateMeta('assessmentRef', this.value)">
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      }
+
+      /* ── MAIN RENDER ───────────────────────────────────────────────────────────── */
+      function render() {
+        const app = document.getElementById('app');
+        const header = `
+        <div class="print-header" style="display:none">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+            <div>Sixth Amendment IAC Assessment Tool — Cronic–Strickland Continuum</div>
+            <div><a href="https://6ac.org" target="_blank" rel="noopener noreferrer"><img src="6ac.png" alt="Sixth Amendment Coalition" class="print-logo"></a></div>
+          </div>
+        </div>
+        <div class="masthead">
+          <div class="masthead-left">
+            <div class="masthead-eyebrow">Sixth Amendment · Right to Counsel</div>
+            <h1><em>Cronic</em>–<em>Strickland</em> IAC Assessment</h1>
+          </div>
+          <div class="masthead-right">
+            <img src="6ac.png" alt="Sixth Amendment Coalition" class="masthead-logo">
+            <div class="masthead-right-text">Ineffective Assistance<br>of Counsel Continuum</div>
+          </div>
+        </div>
+      `;
+        let body = '';
+        if (state.mode === 'start') {
+          body = renderStartPrompt();
+        } else if (state.mode === 'summary') {
+          body = renderMetaForm() + renderSummary();
+        } else if (state.mode === 'result') {
+          body = renderOutcome();
+        } else {
+          body = renderMetaForm() + renderQuestion();
+        }
+        app.innerHTML = header + body;
+      }
+
+      /* ── ACTIONS ───────────────────────────────────────────────────────────────── */
+      function answer(ans) {
+        const q = QUESTIONS[state.currentQ];
+        const noteEl = document.getElementById('qnote');
+        const note = noteEl ? noteEl.value.trim() : '';
+
+        const idx = state.answers.findIndex((a) => a.qid === q.id);
+        if (idx >= 0) state.answers[idx] = { qid: q.id, ans, note };
+        else state.answers.push({ qid: q.id, ans, note });
+
+        state.detailOpen = false;
+        state.pendingNotice = '';
+
+        const consequence = getConsequence(q, ans);
+        const nextQuestionIndex = state.currentQ + 1;
+        if (
+          ans === 'yes' &&
+          consequence &&
+          nextQuestionIndex < QUESTIONS.length
+        ) {
+          state.pendingNotice = `The selected answer indicates: ${OUTCOMES[consequence].verdict}. Continue to the next question for a complete assessment.`;
+        }
+
+        if (nextQuestionIndex < QUESTIONS.length) {
+          state.currentQ = nextQuestionIndex;
+          state.mode = 'question';
+        } else {
+          state.mode = 'summary';
+          state.pendingNotice =
+            'All questions answered. Review your responses before finalizing.';
+        }
+
+        saveState();
+        render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      function previousQuestion() {
+        if (state.currentQ > 0) {
+          state.currentQ -= 1;
+          state.mode = 'question';
+          state.pendingNotice = '';
+          saveState();
+          render();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }
+
+      function reviewAnswers() {
+        state.mode = 'summary';
+        state.pendingNotice = '';
+        saveState();
+        render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      function gotoQuestion(index) {
+        state.currentQ = index;
+        state.mode = 'question';
+        state.pendingNotice = '';
+        saveState();
+        render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      function finalizeAssessment() {
+        state.outcome = getOutcomeFromAnswers() || 'PARTIAL_ASSESSMENT';
+        state.mode = 'result';
+        state.pendingNotice = '';
+        saveState();
+        render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      function continueSurvey() {
+        state.mode = 'question';
+        state.pendingNotice = '';
+        saveState();
+        render();
+      }
+
+      function continueSaved() {
+        state.mode = state.outcome ? 'result' : 'question';
+        state.pendingNotice = '';
+        render();
+      }
+
+      function startNewAssessment() {
+        clearSavedState();
+        state = {
+          currentQ: 0,
+          answers: [],
+          outcome: null,
+          pendingNotice: '',
+          globalNote: '',
+          detailOpen: false,
+          assessorName: '',
+          assessmentRef: '',
+          mode: 'question',
+          resumeAvailable: false,
+        };
+        render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      function toggleDetail() {
+        state.detailOpen = !state.detailOpen;
+        const box = document.getElementById('dbox');
+        const btn = document.getElementById('dtoggle');
+        if (box) box.classList.toggle('open', state.detailOpen);
+        if (btn)
+          btn.textContent = state.detailOpen
+            ? '▲ Hide legal detail'
+            : '▼ Show legal detail';
+      }
+
+      function restart() {
+        clearSavedState();
+        state = {
+          currentQ: 0,
+          answers: [],
+          outcome: null,
+          pendingNotice: '',
+          globalNote: '',
+          detailOpen: false,
+          assessorName: state.assessorName,
+          assessmentRef: '',
+          mode: 'question',
+          resumeAvailable: false,
+        };
+        render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      function exportPDF() {
+        const gn = document.getElementById('globalNote');
+        if (gn) state.globalNote = gn.value;
+        saveState();
+        document
+          .querySelectorAll('.detail-box')
+          .forEach((el) => el.classList.add('open'));
+        document
+          .querySelectorAll('.print-header')
+          .forEach((el) => (el.style.display = 'block'));
+        window.print();
+        document
+          .querySelectorAll('.print-header')
+          .forEach((el) => (el.style.display = 'none'));
+      }
+
+      /* ── INIT ──────────────────────────────────────────────────────────────────── */
+      loadSavedState();
+      render();
+    </script>
+  </body>
+</html>
