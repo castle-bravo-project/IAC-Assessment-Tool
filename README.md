@@ -49,12 +49,14 @@ cd IAC-Assessment-Tool
 
 3. **Launch the application:**
 Simply double-click the `index.html` file to open it in your default web browser, or run:
+
+### On macOS
 ```bash
-# On macOS
 open index.html
 ```
-```
-# On Linux
+
+### On Linux
+```bash
 xdg-open index.html
 ```
 
